@@ -23,6 +23,6 @@ public class Meme extends BaseEntity {
 
     private String memeUrl;
     private Integer memeHit;
-
+    private Integer memeDownload;
 
 }
