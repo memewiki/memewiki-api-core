@@ -1,12 +1,11 @@
-package com.memewiki.core.meme.repository;
+package com.memewiki.core.domain.meme.repository;
 
-import com.memewiki.core.meme.domain.QMeme;
-import com.memewiki.core.meme.response.PopularMemeResponse;
-import com.memewiki.core.meme.response.QPopularMemeResponse;
+import com.memewiki.core.domain.meme.response.PopularMemeResponse;
+import com.memewiki.core.domain.meme.response.QPopularMemeResponse;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
-import static com.memewiki.core.meme.domain.QMeme.meme;
+import static com.memewiki.core.domain.meme.domain.QMeme.meme;
 
 import java.util.List;
 

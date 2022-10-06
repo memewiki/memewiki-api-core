@@ -32,7 +32,7 @@ public class SwaggerConfig {
                 .useDefaultResponseMessages(false)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.memewiki.core"))
+                .apis(RequestHandlerSelectors.basePackage("com.memewiki.core.domain"))
                 .paths(PathSelectors.regex("/(api|guest)/.*"))
                 .build();
     }

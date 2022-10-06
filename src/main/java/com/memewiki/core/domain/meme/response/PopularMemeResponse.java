@@ -1,6 +1,6 @@
-package com.memewiki.core.meme.response;
+package com.memewiki.core.domain.meme.response;
 
-import com.memewiki.core.meme.domain.Meme;
+import com.memewiki.core.domain.meme.domain.Meme;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.AccessLevel;
 import lombok.Getter;

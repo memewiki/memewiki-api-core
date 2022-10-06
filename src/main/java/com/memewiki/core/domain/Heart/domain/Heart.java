@@ -1,4 +1,4 @@
-package com.memewiki.core.Tag.domain;
+package com.memewiki.core.domain.Heart.domain;
 
 import com.memewiki.core.common.entity.BaseEntity;
 import javax.persistence.Column;
@@ -15,12 +15,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Tag extends BaseEntity {
+public class Heart extends BaseEntity {
     @Id
-    @Column(name = "tag")
+    @Column(name = "heart_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String tagName;
+    // TODO : 나중에 login기능이 구현되면 변경할수도 있음.
+    private String heartIp;
 
 }
