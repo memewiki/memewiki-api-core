@@ -1,4 +1,4 @@
-package com.memewiki.core.memeTag.domain;
+package com.memewiki.core.domain.Tag.domain;
 
 import com.memewiki.core.common.entity.BaseEntity;
 import javax.persistence.Column;
@@ -15,9 +15,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class MemeTag extends BaseEntity {
+public class Tag extends BaseEntity {
     @Id
-    @Column(name = "meme_tag_id")
+    @Column(name = "tag")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String tagName;
+
 }

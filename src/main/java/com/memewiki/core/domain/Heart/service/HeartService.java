@@ -1,6 +1,6 @@
-package com.memewiki.core.Heart.service;
+package com.memewiki.core.domain.Heart.service;
 
-import com.memewiki.core.Heart.repository.HeartRepository;
+import com.memewiki.core.domain.Heart.repository.HeartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

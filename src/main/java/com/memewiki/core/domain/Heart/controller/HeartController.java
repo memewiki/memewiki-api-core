@@ -1,4 +1,4 @@
-package com.memewiki.core.Heart.controller;
+package com.memewiki.core.domain.Heart.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;

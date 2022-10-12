@@ -1,4 +1,4 @@
-package com.memewiki.core.meme.domain;
+package com.memewiki.core.domain.meme.domain;
 
 import com.memewiki.core.common.entity.BaseEntity;
 import javax.persistence.Column;
