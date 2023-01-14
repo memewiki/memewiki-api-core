@@ -1,4 +1,9 @@
 spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/memewiki?useUnicode=true&charset=utf8mb4&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Seoul
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: chopin9355#
   data:
     redis:
       repositories:
@@ -34,3 +39,8 @@ logging:
     org:
       hibernate:
         type: trace
+client:
+  url: http://localhost:3000
+swagger:
+  url: http://localhost:8080
+  desc: used for local environment
