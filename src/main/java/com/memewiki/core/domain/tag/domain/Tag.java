@@ -1,4 +1,4 @@
-package com.memewiki.core.domain.Tag.domain;
+package com.memewiki.core.domain.tag.domain;
 
 import com.memewiki.core.common.entity.BaseEntity;
 import javax.persistence.Column;
@@ -23,4 +23,7 @@ public class Tag extends BaseEntity {
 
     private String tagName;
 
+    public Tag(String tagName) {
+        this.tagName = tagName;
+    }
 }

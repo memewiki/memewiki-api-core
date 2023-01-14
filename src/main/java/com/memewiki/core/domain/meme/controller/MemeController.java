@@ -1,15 +1,15 @@
 package com.memewiki.core.domain.meme.controller;
 
-import com.memewiki.core.domain.meme.response.PopularMemeResponse;
+import com.memewiki.core.common.response.BaseResponse;
+import com.memewiki.core.domain.meme.facade.MemeFacadeService;
+import com.memewiki.core.domain.meme.request.MemePostRequest;
 import com.memewiki.core.domain.meme.service.MemeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,10 +17,31 @@ import java.util.List;
 @RequestMapping("/api/v1/memes")
 public class MemeController {
     private final MemeService memeService;
+    private final MemeFacadeService memeFacadeService;
 
     @GetMapping("/popular")
     @ApiOperation(value = "인기있는 밈 출력 API")
-    public List<PopularMemeResponse> findPopularMemes(){
-        return memeService.findPopularMemes();
+    public ResponseEntity<BaseResponse> findPopularMemes(){
+        BaseResponse baseResponse = BaseResponse.of(HttpStatus.OK, "");
+        baseResponse.setData(memeService.findPopularMemes());
+        return ResponseEntity.ok(baseResponse);
     }
+
+    @GetMapping("/main/{pagingNum}")
+    @ApiOperation(value = "최근 등록 밈 출력 API")
+    public ResponseEntity<BaseResponse> findMemesWithPageable(@PathVariable(name = "pagingNum", required = false) Integer pagingNum){
+        BaseResponse baseResponse = BaseResponse.of(HttpStatus.OK, "");
+        baseResponse.setData(memeService.findMemesWithPageable(pagingNum));
+        return ResponseEntity.ok(baseResponse);
+    }
+
+    @PostMapping
+    @ApiOperation(value = "밈 등록하기")
+    public ResponseEntity<BaseResponse> saveMemes(@RequestBody MemePostRequest memePostRequest) {
+        BaseResponse baseResponse = BaseResponse.of(HttpStatus.OK, "");
+        baseResponse.setData(memeFacadeService.saveMemes(memePostRequest));
+
+        return ResponseEntity.ok(baseResponse);
+    }
+
 }

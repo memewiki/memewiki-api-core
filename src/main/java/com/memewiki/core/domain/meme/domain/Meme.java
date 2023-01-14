@@ -1,11 +1,8 @@
 package com.memewiki.core.domain.meme.domain;
 
 import com.memewiki.core.common.entity.BaseEntity;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +21,11 @@ public class Meme extends BaseEntity {
     private String memeUrl;
     private Integer memeHit;
     private Integer memeDownload;
+
+    public Meme(String memeUrl, Integer memeHit, Integer memeDownload){
+        this.memeUrl = memeUrl;
+        this.memeHit = memeHit;
+        this.memeDownload = memeDownload;
+    }
 
 }

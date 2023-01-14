@@ -22,7 +22,8 @@ public class SwaggerConfig {
     @Value("${swagger.desc}")
     private String desc;
 
-    @Value("${spring.profiles.active}")
+//    @Value("${spring.profiles.active}")
+    @Value("active")
     private String profile;
 
     @Bean
