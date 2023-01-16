@@ -1,6 +1,6 @@
 package com.memewiki.core.domain.meme.controller;
 
-import com.memewiki.core.domain.meme.request.MemePostRequest;
+import com.memewiki.core.domain.meme.request.MemeSaveRequest;
 import com.memewiki.core.domain.tag.domain.Tag;
 import com.memewiki.core.domain.tag.repository.TagRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -52,12 +52,12 @@ class MemeControllerTest {
         lists.add(1L);
         lists.add(2L);
         lists.add(4L);
-        MemePostRequest memePostRequest = new MemePostRequest("url-test", lists);
+        MemeSaveRequest memeSaveRequest = new MemeSaveRequest("url-test", lists);
 
         // when
         ResultActions perform = mvc.perform(post("/api/v1/memes")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(memePostRequest))
+                .content(objectMapper.writeValueAsString(memeSaveRequest))
                 .accept(MediaType.APPLICATION_JSON)
         );
 

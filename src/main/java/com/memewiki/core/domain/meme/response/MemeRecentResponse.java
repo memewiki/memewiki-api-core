@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MemeResponse {
+public class MemeRecentResponse {
     private Long memeId;
     private String memeUrl;
     private Integer memeHit;
     private LocalDateTime createdAt;
 
     @QueryProjection
-    public MemeResponse(Meme meme){
+    public MemeRecentResponse(Meme meme){
         memeId = meme.getId();
         memeUrl = meme.getMemeUrl();
         memeHit = meme.getMemeHit();

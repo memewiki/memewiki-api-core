@@ -2,7 +2,7 @@ package com.memewiki.core.domain.meme.controller;
 
 import com.memewiki.core.common.response.BaseResponse;
 import com.memewiki.core.domain.meme.facade.MemeFacadeService;
-import com.memewiki.core.domain.meme.request.MemePostRequest;
+import com.memewiki.core.domain.meme.request.MemeSaveRequest;
 import com.memewiki.core.domain.meme.service.MemeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,10 +37,17 @@ public class MemeController {
 
     @PostMapping
     @ApiOperation(value = "밈 등록하기")
-    public ResponseEntity<BaseResponse> saveMemes(@RequestBody MemePostRequest memePostRequest) {
+    public ResponseEntity<BaseResponse> saveMemes(@RequestBody MemeSaveRequest memeSaveRequest) {
         BaseResponse baseResponse = BaseResponse.of(HttpStatus.OK, "");
-        baseResponse.setData(memeFacadeService.saveMemes(memePostRequest));
+        baseResponse.setData(memeFacadeService.saveMemes(memeSaveRequest));
 
+        return ResponseEntity.ok(baseResponse);
+    }
+
+    @GetMapping("/{memeId}")
+    @ApiOperation(value = "밈 상세보기")
+    public ResponseEntity<BaseResponse> findMeme(@PathVariable(name = "memeId", required = true) Long memeId){
+        BaseResponse baseResponse = BaseResponse.of(HttpStatus.OK, "");
         return ResponseEntity.ok(baseResponse);
     }
 
