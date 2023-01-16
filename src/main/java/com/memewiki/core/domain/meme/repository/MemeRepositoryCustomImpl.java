@@ -1,9 +1,6 @@
 package com.memewiki.core.domain.meme.repository;
 
-import com.memewiki.core.domain.meme.response.MemePopularResponse;
-import com.memewiki.core.domain.meme.response.MemeRecentResponse;
-import com.memewiki.core.domain.meme.response.QMemeRecentResponse;
-import com.memewiki.core.domain.meme.response.QMemePopularResponse;
+import com.memewiki.core.domain.meme.response.*;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

@@ -40,7 +40,6 @@ public class MemeController {
     public ResponseEntity<BaseResponse> saveMemes(@RequestBody MemeSaveRequest memeSaveRequest) {
         BaseResponse baseResponse = BaseResponse.of(HttpStatus.OK, "");
         baseResponse.setData(memeFacadeService.saveMemes(memeSaveRequest));
-
         return ResponseEntity.ok(baseResponse);
     }
 
