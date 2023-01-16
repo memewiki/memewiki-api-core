@@ -66,7 +66,4 @@ class MemeControllerTest {
                 .andDo(print());
     }
 
-    @Test
-    void findMemesWithPageable() {
-    }
 }
