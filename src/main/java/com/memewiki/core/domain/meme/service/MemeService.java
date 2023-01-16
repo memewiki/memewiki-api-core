@@ -1,6 +1,6 @@
 package com.memewiki.core.domain.meme.service;
-import com.memewiki.core.domain.meme.response.MemeResponse;
-import com.memewiki.core.domain.meme.response.PopularMemeResponse;
+import com.memewiki.core.domain.meme.response.MemePopularResponse;
+import com.memewiki.core.domain.meme.response.MemeRecentResponse;
 import com.memewiki.core.domain.meme.repository.MemeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,11 @@ import java.util.List;
 public class MemeService {
     private final MemeRepository memeRepository;
 
-    public List<PopularMemeResponse> findPopularMemes(){
+    public List<MemePopularResponse> findPopularMemes(){
         return memeRepository.findPopularMemes();
     }
 
-    public List<MemeResponse> findMemesWithPageable(Integer pagingNum){
+    public List<MemeRecentResponse> findMemesWithPageable(Integer pagingNum){
         return memeRepository.findMemesWithPageable(pagingNum);
     }
 

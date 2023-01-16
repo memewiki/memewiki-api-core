@@ -1,9 +1,9 @@
 package com.memewiki.core.domain.meme.repository;
 
-import com.memewiki.core.domain.meme.response.MemeResponse;
-import com.memewiki.core.domain.meme.response.PopularMemeResponse;
-import com.memewiki.core.domain.meme.response.QMemeResponse;
-import com.memewiki.core.domain.meme.response.QPopularMemeResponse;
+import com.memewiki.core.domain.meme.response.MemePopularResponse;
+import com.memewiki.core.domain.meme.response.MemeRecentResponse;
+import com.memewiki.core.domain.meme.response.QMemeRecentResponse;
+import com.memewiki.core.domain.meme.response.QMemePopularResponse;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +18,8 @@ public class MemeRepositoryCustomImpl implements MemeRepositoryCustom{
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<PopularMemeResponse> findPopularMemes(){
-        return queryFactory.select(new QPopularMemeResponse(
+    public List<MemePopularResponse> findPopularMemes(){
+        return queryFactory.select(new QMemePopularResponse(
                     meme
                 ))
                 .from(meme)
@@ -31,8 +31,8 @@ public class MemeRepositoryCustomImpl implements MemeRepositoryCustom{
     }
 
     @Override
-    public List<MemeResponse> findMemesWithPageable(Integer pagingNum){
-        return queryFactory.select(new QMemeResponse(
+    public List<MemeRecentResponse> findMemesWithPageable(Integer pagingNum){
+        return queryFactory.select(new QMemeRecentResponse(
                         meme
                 ))
                 .from(meme)

@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @AllArgsConstructor
-public class MemePostRequest {
+public class MemeSaveRequest {
     private String imageUrl;
 
     @Size(min = 1, max = 3)
