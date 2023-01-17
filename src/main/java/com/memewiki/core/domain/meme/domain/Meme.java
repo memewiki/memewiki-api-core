@@ -3,6 +3,7 @@ package com.memewiki.core.domain.meme.domain;
 import com.memewiki.core.common.entity.BaseEntity;
 
 import javax.persistence.*;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,10 @@ public class Meme extends BaseEntity {
         this.memeUrl = memeUrl;
         this.memeHit = memeHit;
         this.memeDownload = memeDownload;
+    }
+
+    public void hitsUp(){
+        this.memeHit++;
     }
 
 }

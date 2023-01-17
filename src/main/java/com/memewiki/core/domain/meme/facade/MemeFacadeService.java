@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -32,11 +33,24 @@ public class MemeFacadeService {
                 tagIds -> tags.add(tagRepository.findById(tagIds).get())
         );
 
+        List<MemeTag> memeTags = new ArrayList<>();
         tags.forEach(
-                tag -> memeTagRepository.save(new MemeTag(save, tag))
+                tag -> memeTags.add(new MemeTag(save, tag))
         );
+        memeTagRepository.saveAll(memeTags);
 
         return new MemeDetailResponse(save, tags);
+    }
+
+    public MemeDetailResponse findMemesAndHit(Long memeId){
+        Meme meme = Optional.ofNullable(memeRepository.findById(memeId).orElseThrow(NullPointerException::new)).get();
+        meme.hitsUp();
+        List<Tag> tags = new ArrayList<>();
+
+        memeTagRepository.findAllByMemeId(memeId).forEach(
+                tag -> tags.add(tagRepository.findById(tag.getId()).get())
+        );
+        return new MemeDetailResponse(meme, tags);
     }
 
 

@@ -47,6 +47,7 @@ public class MemeController {
     @ApiOperation(value = "밈 상세보기")
     public ResponseEntity<BaseResponse> findMeme(@PathVariable(name = "memeId", required = true) Long memeId){
         BaseResponse baseResponse = BaseResponse.of(HttpStatus.OK, "");
+        baseResponse.setData(memeFacadeService.findMemesAndHit(memeId));
         return ResponseEntity.ok(baseResponse);
     }
 

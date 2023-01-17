@@ -13,6 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -32,6 +34,9 @@ class MemeControllerTest {
 
     @Autowired
     private TagRepository tagRepository;
+
+    @Autowired
+    private EntityManager em;
 
 
     @BeforeEach
@@ -64,6 +69,14 @@ class MemeControllerTest {
         // then
         perform.andExpect(status().isOk())
                 .andDo(print());
+
+        em.flush();
+
+        ResultActions perform2 = mvc.perform(get("/api/v1/memes/1"));
+
+        perform2.andExpect(status().isOk())
+                .andDo(print());
+
     }
 
 }
