@@ -47,6 +47,7 @@ class MemeControllerTest {
         tags.add(Tag.builder().tagName("분노").build());
         tags.add(Tag.builder().tagName("퇴근").build());
         tags.add(Tag.builder().tagName("출근").build());
+        tags.add(Tag.builder().tagName("퇴사").build());
         tagRepository.saveAll(tags);
     }
 
