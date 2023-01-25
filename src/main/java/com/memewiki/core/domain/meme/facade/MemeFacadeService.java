@@ -1,5 +1,7 @@
 package com.memewiki.core.domain.meme.facade;
 
+import com.memewiki.core.common.response.errorHandler.exception.NoMemeException;
+import com.memewiki.core.common.response.errorHandler.exception.NoTagException;
 import com.memewiki.core.domain.meme.domain.Meme;
 import com.memewiki.core.domain.meme.repository.MemeRepository;
 import com.memewiki.core.domain.meme.request.MemeSaveRequest;
@@ -34,7 +36,7 @@ public class MemeFacadeService {
         List<Tag> tags = new ArrayList<>();
 
         memeSaveRequest.getTagIds().forEach(
-                tagIds -> tags.add(tagRepository.findById(tagIds).get())
+                tagIds -> tags.add(tagRepository.findById(tagIds).orElseThrow(NoTagException::new))
         );
 
         List<MemeTag> memeTags = new ArrayList<>();
@@ -50,15 +52,13 @@ public class MemeFacadeService {
     }
 
     public MemeDetailResponse findMemesAndHit(Long memeId){
-        Meme meme = Optional.ofNullable(memeRepository.findById(memeId).orElseThrow(NullPointerException::new)).get();
+        Meme meme = memeRepository.findById(memeId).orElseThrow(NoMemeException::new);
         meme.hitsUp();
         List<Tag> tags = new ArrayList<>();
 
         memeTagRepository.findAllByMemeId(memeId).forEach(
-                tag -> tags.add(tagRepository.findById(tag.getId()).get())
+                tag -> tags.add(tagRepository.findById(tag.getId()).orElseThrow(NoTagException::new))
         );
         return new MemeDetailResponse(meme, tags);
     }
-
-
 }
