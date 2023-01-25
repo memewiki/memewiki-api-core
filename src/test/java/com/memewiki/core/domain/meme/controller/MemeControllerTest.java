@@ -42,11 +42,11 @@ class MemeControllerTest {
     @BeforeEach
     public void tagDataIn() {
         List<Tag> tags = new ArrayList<>();
-        tags.add(new Tag("화남"));
-        tags.add(new Tag("슬픔"));
-        tags.add(new Tag("분노"));
-        tags.add(new Tag("퇴근"));
-        tags.add(new Tag("출근"));
+        tags.add(Tag.builder().tagName("화남").build());
+        tags.add(Tag.builder().tagName("슬픔").build());
+        tags.add(Tag.builder().tagName("분노").build());
+        tags.add(Tag.builder().tagName("퇴근").build());
+        tags.add(Tag.builder().tagName("출근").build());
         tagRepository.saveAll(tags);
     }
 

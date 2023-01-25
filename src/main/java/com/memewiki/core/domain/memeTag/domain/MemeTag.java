@@ -6,15 +6,13 @@ import javax.persistence.*;
 
 import com.memewiki.core.domain.tag.domain.Tag;
 import com.memewiki.core.domain.meme.domain.Meme;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 public class MemeTag extends BaseEntity {
     @Id
     @Column(name = "meme_tag_id")
@@ -28,9 +26,4 @@ public class MemeTag extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tag_id")
     private Tag tag;
-
-    public MemeTag(Meme meme, Tag tag) {
-        this.meme = meme;
-        this.tag = tag;
-    }
 }
