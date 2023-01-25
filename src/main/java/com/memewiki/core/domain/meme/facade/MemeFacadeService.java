@@ -26,7 +26,11 @@ public class MemeFacadeService {
 
     @Transactional
     public MemeDetailResponse saveMemes(MemeSaveRequest memeSaveRequest) {
-        Meme save = memeRepository.save(new Meme(memeSaveRequest.getImageUrl(), 0, 0));
+        Meme save = memeRepository.save(Meme.builder()
+                        .memeUrl(memeSaveRequest.getImageUrl())
+                        .memeDownload(0)
+                        .memeHit(0)
+                        .build());
         List<Tag> tags = new ArrayList<>();
 
         memeSaveRequest.getTagIds().forEach(
@@ -35,9 +39,12 @@ public class MemeFacadeService {
 
         List<MemeTag> memeTags = new ArrayList<>();
         tags.forEach(
-                tag -> memeTags.add(new MemeTag(save, tag))
-        );
+                tag -> memeTags.add(MemeTag.builder()
+                                .meme(save)
+                                .tag(tag)
+                                .build()));
         memeTagRepository.saveAll(memeTags);
+        memeTagRepository.save(memeTags.get(0));
 
         return new MemeDetailResponse(save, tags);
     }
