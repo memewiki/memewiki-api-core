@@ -3,11 +3,15 @@ package com.memewiki.core.domain.meme.response;
 import com.memewiki.core.domain.meme.domain.Meme;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@Setter
 public class MemePopularResponse {
     private Long memeId;
     private String memeUrl;

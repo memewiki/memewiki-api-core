@@ -59,10 +59,10 @@ class MemeControllerTest {
     @Test
     void 밈저장테스트() throws Exception {
         // given
-        List<Long> lists = new ArrayList<>();
-        lists.add(1L);
-        lists.add(2L);
-        lists.add(4L);
+        List<String> lists = new ArrayList<>();
+        lists.add("박명수");
+        lists.add("무한도전");
+        lists.add("퇴사");
         MemeSaveRequest memeSaveRequest = new MemeSaveRequest("url-test", lists);
 
         // when
@@ -88,10 +88,10 @@ class MemeControllerTest {
     @Test
     void 에러테스트_밈없음() throws Exception {
         // given
-        List<Long> lists = new ArrayList<>();
-        lists.add(1L);
-        lists.add(2L);
-        lists.add(4L);
+        List<String> lists = new ArrayList<>();
+        lists.add("박명수");
+        lists.add("무한도전");
+        lists.add("퇴사");
         MemeSaveRequest memeSaveRequest = new MemeSaveRequest("url-test", lists);
 
         // when
@@ -115,10 +115,10 @@ class MemeControllerTest {
     @Test
     void 에러테스트_태그없음() throws Exception {
         // given
-        List<Long> lists = new ArrayList<>();
-        lists.add(1L);
-        lists.add(2L);
-        lists.add(4111L);
+        List<String> lists = new ArrayList<>();
+        lists.add("박명수");
+        lists.add("무한도전");
+        lists.add("퇴사");
         MemeSaveRequest memeSaveRequest = new MemeSaveRequest("url-test", lists);
 
         // when

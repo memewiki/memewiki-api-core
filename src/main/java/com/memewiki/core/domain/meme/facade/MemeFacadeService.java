@@ -35,8 +35,8 @@ public class MemeFacadeService {
                         .build());
         List<Tag> tags = new ArrayList<>();
 
-        memeSaveRequest.getTagIds().forEach(
-                tagIds -> tags.add(tagRepository.findById(tagIds).orElseThrow(NoTagException::new))
+        memeSaveRequest.getTags().forEach(
+                tagNames -> tags.add(new Tag(tagNames))
         );
 
         List<MemeTag> memeTags = new ArrayList<>();

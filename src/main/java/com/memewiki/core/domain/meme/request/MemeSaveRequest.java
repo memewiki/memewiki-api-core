@@ -16,5 +16,5 @@ public class MemeSaveRequest {
     private String imageUrl;
 
     @Size(min = 1, max = 3)
-    private List<Long> tagIds = new ArrayList<>();
+    private List<String> tags = new ArrayList<>();
 }

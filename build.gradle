@@ -62,7 +62,8 @@ dependencies {
 
     // Redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
 }
 
 tasks.named('test') {
@@ -87,4 +88,5 @@ configurations {
         extendsFrom annotationProcessor
     }
     querydsl.extendsFrom compileClasspath
+    compile.exclude group: "org.slf4j", module: "slf4j-log4j12"
 }

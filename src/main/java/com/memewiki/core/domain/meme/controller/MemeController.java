@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @Api(tags = "meme 관련 APIs - v1")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/memes")
 public class MemeController {
     private final MemeService memeService;
