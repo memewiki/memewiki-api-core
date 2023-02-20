@@ -29,7 +29,7 @@ public class MemeController {
 
     @GetMapping("/main/{pagingNum}")
     @ApiOperation(value = "최근 등록 밈 출력 API")
-    public ResponseEntity<BaseResponse> findMemesWithPageable(@PathVariable(name = "pagingNum", required = false) Integer pagingNum){
+    public ResponseEntity<BaseResponse> findMemesWithPageable(@PathVariable(name = "pagingNum", required = false) Long pagingNum){
         BaseResponse baseResponse = BaseResponse.of(HttpStatus.OK, "");
         baseResponse.setData(memeService.findMemesWithPageable(pagingNum));
         return ResponseEntity.ok(baseResponse);
@@ -50,5 +50,4 @@ public class MemeController {
         baseResponse.setData(memeFacadeService.findMemesAndHit(memeId));
         return ResponseEntity.ok(baseResponse);
     }
-
 }

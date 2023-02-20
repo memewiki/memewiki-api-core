@@ -15,11 +15,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.management.ServiceNotFoundException;
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -138,5 +136,6 @@ class MemeControllerTest {
                 .andExpect((rslt) -> assertTrue(rslt.getResolvedException().getClass().isAssignableFrom(NoMemeException.class)));
 
     }
+
 
 }

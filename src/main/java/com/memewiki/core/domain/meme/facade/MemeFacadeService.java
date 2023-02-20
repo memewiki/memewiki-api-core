@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -25,6 +24,18 @@ public class MemeFacadeService {
     private final MemeRepository memeRepository;
     private final MemeTagRepository memeTagRepository;
     private final TagRepository tagRepository;
+
+    @Transactional
+    public void tagTestSave(){
+        List<Tag> tags = new ArrayList<>();
+        tags.add(Tag.builder().tagName("화남").build());
+        tags.add(Tag.builder().tagName("슬픔").build());
+        tags.add(Tag.builder().tagName("분노").build());
+        tags.add(Tag.builder().tagName("퇴근").build());
+        tags.add(Tag.builder().tagName("출근").build());
+        tags.add(Tag.builder().tagName("퇴사").build());
+        tagRepository.saveAll(tags);
+    }
 
     @Transactional
     public MemeDetailResponse saveMemes(MemeSaveRequest memeSaveRequest) {
@@ -46,7 +57,6 @@ public class MemeFacadeService {
                                 .tag(tag)
                                 .build()));
         memeTagRepository.saveAll(memeTags);
-        memeTagRepository.save(memeTags.get(0));
 
         return new MemeDetailResponse(save, tags);
     }

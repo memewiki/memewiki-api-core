@@ -15,15 +15,12 @@ import lombok.*;
 @Builder
 public class MemeTag extends BaseEntity {
     @Id
-    @Column(name = "meme_tag_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "meme_id")
     private Meme meme;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tag_id")
     private Tag tag;
 }

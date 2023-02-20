@@ -19,7 +19,7 @@ public class MemeService {
         return memeRepository.findPopularMemes();
     }
 
-    public List<MemeRecentResponse> findMemesWithPageable(Integer pagingNum){
+    public List<MemeRecentResponse> findMemesWithPageable(Long pagingNum){
         return memeRepository.findMemesWithPageable(pagingNum);
     }
 
