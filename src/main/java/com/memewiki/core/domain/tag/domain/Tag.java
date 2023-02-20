@@ -16,7 +16,6 @@ import lombok.*;
 @Builder
 public class Tag extends BaseEntity {
     @Id
-    @Column(name = "tag")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

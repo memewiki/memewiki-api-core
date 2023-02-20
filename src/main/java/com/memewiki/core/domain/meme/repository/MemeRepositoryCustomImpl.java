@@ -1,11 +1,17 @@
 package com.memewiki.core.domain.meme.repository;
 
 import com.memewiki.core.domain.meme.response.*;
+import com.memewiki.core.domain.tag.response.TagMemeRecentResponse;
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
 import static com.memewiki.core.domain.meme.domain.QMeme.meme;
+import static com.memewiki.core.domain.memeTag.domain.QMemeTag.memeTag;
+import static com.memewiki.core.domain.tag.domain.QTag.tag;
+import static com.querydsl.core.group.GroupBy.groupBy;
+import static com.querydsl.core.group.GroupBy.list;
 
 import java.util.List;
 
@@ -28,28 +34,26 @@ public class MemeRepositoryCustomImpl implements MemeRepositoryCustom{
     }
 
     @Override
-    public List<MemeRecentResponse> findMemesWithPageable(Integer pagingNum){
-        return queryFactory.select(new QMemeRecentResponse(
-                        meme
-                ))
-                .from(meme)
-                .where(meme.deletedAt.isNull()
-                        , memeIdLoe(pageFounder(pagingNum))
+    public List<MemeRecentResponse> findMemesWithPageable(Long pagingNum){
+        return queryFactory
+                .selectFrom(meme)
+                .leftJoin(meme.memeTagList, memeTag)
+                .leftJoin(memeTag.tag, tag)
+                .where(
+                        memeIdBetween(pagingNum)
                 )
-                .orderBy(meme.id.desc())
-                .limit(pageFounder(pagingNum+1))
-                .fetch()
-                ;
+                .distinct()
+                .transform(
+                        groupBy(meme.id).list(
+                                Projections.constructor(MemeRecentResponse.class
+                                        , meme
+                                        , list(tag)
+                                )
+                        )
+                );
     }
 
-    private Long pageFounder(Integer pagingNum){
-        if(pagingNum!=0){
-            pagingNum--;
-        }
-        return (long)(pagingNum*30);
-    }
-
-    private BooleanExpression memeIdLoe(Long pagingNum){
-        return pagingNum != null ? meme.id.loe(pagingNum) : null;
+    private BooleanExpression memeIdBetween(Long pagingNum){
+        return pagingNum != null ? meme.id.between(pagingNum, pagingNum + 30) : null;
     }
 }

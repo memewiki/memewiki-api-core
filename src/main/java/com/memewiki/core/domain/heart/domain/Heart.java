@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Heart extends BaseEntity {
     @Id
-    @Column(name = "heart_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
