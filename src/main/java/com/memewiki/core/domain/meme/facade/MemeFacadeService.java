@@ -26,18 +26,6 @@ public class MemeFacadeService {
     private final TagRepository tagRepository;
 
     @Transactional
-    public void tagTestSave(){
-        List<Tag> tags = new ArrayList<>();
-        tags.add(Tag.builder().tagName("화남").build());
-        tags.add(Tag.builder().tagName("슬픔").build());
-        tags.add(Tag.builder().tagName("분노").build());
-        tags.add(Tag.builder().tagName("퇴근").build());
-        tags.add(Tag.builder().tagName("출근").build());
-        tags.add(Tag.builder().tagName("퇴사").build());
-        tagRepository.saveAll(tags);
-    }
-
-    @Transactional
     public MemeDetailResponse saveMemes(MemeSaveRequest memeSaveRequest) {
         Meme save = memeRepository.save(Meme.builder()
                         .memeUrl(memeSaveRequest.getImageUrl())
