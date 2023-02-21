@@ -30,5 +30,4 @@ public class Meme extends BaseEntity {
     public void hitsUp(){
         this.memeHit++;
     }
-
 }
